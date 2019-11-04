@@ -1,0 +1,104 @@
+/*
+Tokenizer
+A program which takes in a stream of characters in a file and separates them
+into appropriate number or operator tokens. Each token is printed on a separate
+line in the output file. Number tokens are preceded by a bit representing their
+type (integer or float)
+
+Input:
+A .txt file containing one line of characters which should represent an
+arithmetic expression
+
+Output:
+A .txt file containing each of the tokens on separate lines.
+Or an error
+
+@author: Peter O'Donoghue
+*/
+
+#include <stdio.h>
+#include <ctype.h>
+
+int tokenize(){
+  /*
+  function which carries out the full tokenizing process, converting a stream
+  of characters into separate number/operator tokens
+  */
+  // initializing necessary variables for the function
+  char ops[] = {'+', '-', '*', '/', '^', '%', '(', ')'}; // operator array
+  FILE *inp, *out; // files
+  char buffer[255]; // buffer for storing numbers
+  size_t n = 0; // pointer for buffer position
+  char c; // character to be read in
+  size_t type = 0; // number type
+
+  // open files
+  inp = fopen("tokenizer_input.txt", "r");
+  out = fopen("tokenizer_output.txt", "w");
+
+  // no input error
+  if (inp == NULL){
+    return 1;
+  }
+
+  // loop through input file getting new character each time
+  while ((c = fgetc(inp)) != '\n'){
+    // ignore space characters
+    if (c == ' '){
+      // print any previous numbers to output if we hit a space
+      if(n != 0){
+        buffer[n++] = '\0';
+        fprintf(out, "%d ", type);
+        fprintf(out, "%s\n", buffer);
+        n = 0;
+        type = 0;
+      }
+    }
+    // add any number or decimal point to the buffer
+    else if (isdigit(c) || c == '.'){
+      buffer[n++] = (char) c;
+      if(c == '.'){
+        // adjust number type if we get a decimal point
+        type++;
+      }
+      // more than 1 decimal point in a number error
+      if(type > 1){
+        return 1;
+      }
+    }
+    else{
+      // print any number in buffer if we hit
+      //any char that's not a number, decimal point or space
+      if(n != 0){
+        buffer[n++] = '\0';
+        fprintf(out, "%d ", type);
+        fprintf(out, "%s\n", buffer);
+        n = 0;
+        type = 0;
+      }
+      // check if this char is a valid operator
+      // if so print to output
+      for(int i = 0; i < 8; i++ ){
+        if (c == ops[i]){
+          fprintf(out, "%c\n", c); ////////// need error if not operator
+        }
+      }
+    }
+  }
+  // print out any final number to the output
+  if(n != 0){
+    buffer[n++] = '\0';
+    fprintf(out, "%d ", type);
+    fprintf(out, "%s", buffer);
+  }
+  //close all files
+  fclose(inp);
+  fclose(out);
+  // return no error
+  return 0;
+}
+
+int main(int argc, char const *argv[]) {
+  /* run the function to tokenize */
+  return tokenize();
+}
