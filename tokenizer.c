@@ -31,13 +31,15 @@ int tokenize(){
   size_t n = 0; // pointer for buffer position
   char c; // character to be read in
   size_t type = 0; // number type
+  size_t op;
 
   // open files
   inp = fopen("tokenizer_input.txt", "r");
-  out = fopen("tokenizer_output.txt", "w");
+  out = fopen("infix2postfix_input.txt", "w");
 
   // no input error
   if (inp == NULL){
+    printf("Error: no input file recieved");
     return 1;
   }
 
@@ -63,6 +65,7 @@ int tokenize(){
       }
       // more than 1 decimal point in a number error
       if(type > 1){
+        printf("Error: invalid float number recieved");
         return 1;
       }
     }
@@ -78,10 +81,18 @@ int tokenize(){
       }
       // check if this char is a valid operator
       // if so print to output
+      op = 0;
       for(int i = 0; i < 8; i++ ){
         if (c == ops[i]){
-          fprintf(out, "%c\n", c); ////////// need error if not operator
+          fprintf(out, "%c\n", c);
+          op = 1;
+          break;
         }
+      }
+      if (op == 0){
+        // error if the character isn't an operator
+        printf("Error: invalid character received");
+        return 1;
       }
     }
   }
