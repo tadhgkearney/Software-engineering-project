@@ -111,10 +111,10 @@ int main(int argc, char const *argv[]) {
         output_infix[++count] = ' '; // add space
       } else if (item=='1') { // else if item is  float
 
-        lineIndex = 4;
+        lineIndex = 4; // this i the index after the decimal point
         output_infix[count] = line[2]; // add digit to output
-        output_infix[++count] = line[3]; // add fullstop to output
-        while (line[lineIndex]!='\n') { // loop to add digits after fullstop to output
+        output_infix[++count] = line[3]; // add decimal point to output
+        while (line[lineIndex]!='\n') { // loop to add digits after decimal point to output
           output_infix[++count] = line[lineIndex];
           lineIndex++;
         }
@@ -131,7 +131,7 @@ int main(int argc, char const *argv[]) {
         /* Need to remove a space when a closing bracket is to be added as
          * a space is always added after a number
         */
-        output_infix[--count] = line[0]; // remover space and add closing bracket
+        output_infix[--count] = line[0]; // remove a space and add closing bracket
         output_infix[++count] = ' '; // add space
       }
 
