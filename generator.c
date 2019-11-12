@@ -10,7 +10,7 @@
 #include <string.h>
 
 
-int main(int argc, char* argv[])
+int generator()
 {
     // pointer to file we are reading
     FILE *fptr;
@@ -18,11 +18,11 @@ int main(int argc, char* argv[])
     FILE *fptr2;
     // checks to make sure that the file isn't empty
     // if it is it prints an error and exits the program
-    if ((fptr = fopen("calculator.txt","r")) == NULL){
+    if ((fptr = fopen("generator_input.txt","r")) == NULL){
         printf("Error! opening file");
         exit(0);
     }
-    fptr2 = fopen("calculator2.txt", "w");
+    fptr2 = fopen("virtualMachine_input.txt", "w");
     char token[255];
     // fscanf reads up until it reaches a space
     // go through the file token by token until we reach the end of the file
