@@ -7,9 +7,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <string.h>
 
 
-int main()
+int main(int argc, char* argv[])
 {
     // pointer to file we are reading
     FILE *fptr;
@@ -23,48 +24,47 @@ int main()
     }
     fptr2 = fopen("calculator2.txt", "w");
     char token[255];
-    int p;
     // fscanf reads up until it reaches a space
-    fscanf(fptr, "%s", token);
-    //printf(token);
     // go through the file token by token until we reach the end of the file
-    while(token[0] != EOF){
-
-        if(isdigit(token)){
-            // convert the token to an integer
-            int num = atoi(token);
-            fprintf(fptr2, "LOADINT %d", num);
-        }
-        else if(token == "+"){
+    while(fscanf(fptr, "%s", token) == 1){
+        if(token[0] == '+'){
             fprintf(fptr2, "ADD");
         }
-        else if(token == "-"){
+        else if(token[0] == '-'){
             fprintf(fptr2, "SUB");
         }
-        else if(token == "*"){
+        else if(token[0] == '*'){
             fprintf(fptr2, "MUL");
         }
-        else if(token == "/"){
+        else if(token[0] == '/'){
             fprintf(fptr2, "DIV");
         }
-        else if(token == "^"){
+        else if(token[0] == '^'){
             fprintf(fptr2, "POW");
         }
-        else if(token == "%"){
+        else if(token[0] == '%'){
             fprintf(fptr2, "MOD");
         }
         else{
-            for(int i=0;i<token.length();i++){
+            // there is no in-bulit boolean value in c, so using 0 as false and 1 as true
+            int is_float = 0;
+            for(int i=0;i<255;i++){
                 if(token[i]=='.'){
-                    double r = atoi(token);
-                    fprintf(fptr2, "LOADFLOAT %f", r);
+                    double r = atof(token);
+                    // BUG ALERT: no float greater than 5 decimal places can be printed
+                    // %g uses the shortest representation of a float. i.e. gets rid of trailing zeros
+                    fprintf(fptr2, "LOADFLOAT %g", r);
+                    is_float = 1;
+                    break;
                 }
             }
-            int t = atoi(token);
-            fprintf(fptr2,"LOADINT %d", t);
+            if(!is_float){
+                int t = atoi(token);
+                fprintf(fptr2,"LOADINT %d", t);
+            }
         }
-
-        fscanf(fptr, "s", token);
+        fprintf(fptr2, "\n");
+        memset(token, 0, sizeof(token));
     }
 
     fclose(fptr);
