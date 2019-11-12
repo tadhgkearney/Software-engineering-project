@@ -1,3 +1,5 @@
+// STACK DESIGNED FOR INTS
+
 // C program for array implementation of stack
 #include <limits.h>
 #include <stdio.h>
