@@ -5,8 +5,8 @@ struct Stack;
 struct Stack* createStack(unsigned capacity);
 int isFull(struct Stack* stack);
 int isEmpty(struct Stack* stack);
-void push(struct Stack* stack, int item);
-int pop(struct Stack* stack);
-int top(struct Stack* stack);
+void push(struct Stack* stack, float item);
+float pop(struct Stack* stack);
+float top(struct Stack* stack);
 
 #endif
