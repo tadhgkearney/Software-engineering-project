@@ -16,6 +16,7 @@ A .txt file containing the converted postfix equation on a single line.
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
+#include "generator.h"
 
 
 #define size 256
@@ -47,7 +48,7 @@ int precedence(char symbol) {
   */
   if(symbol=='^') {
     return 3;
-  } else if(symbol=='*' || symbol=='/') {
+  } else if(symbol=='%' || symbol=='*' || symbol=='/') {
     return 2;
   } else if(symbol=='+' || symbol=='-') {
     return 1;
@@ -70,7 +71,7 @@ int isOperator(char symbol) {
    * Function parameter is a single character
    * Returns 1 for true pr 0 for false
   */
-  if(symbol=='^' || symbol=='*' || symbol=='+' || symbol=='-' || symbol== '/') {
+  if(symbol=='%' || symbol=='^' || symbol=='*' || symbol=='+' || symbol=='-' || symbol== '/') {
     return 1;
   } else {
     return 0;
@@ -79,9 +80,9 @@ int isOperator(char symbol) {
 
 
 
-int main(int argc, char const *argv[]) {
-  FILE *in_file = fopen("sample.txt", "r"); // open input file in read mode
-  FILE *out_file = fopen("output.txt", "w"); //open output file in write mode
+int i2p() {
+  FILE *in_file = fopen("infix2postfix_input.txt", "r"); // open input file in read mode
+  FILE *out_file = fopen("generator_input.txt", "w"); //open output file in write mode
 
   size_t len = sizeof(input_infix);
   char *line = malloc(len);
@@ -204,5 +205,5 @@ int main(int argc, char const *argv[]) {
   }
   fprintf(out_file, "\0"); // print end of line to output file
   fclose(out_file); // close file
-  return 0;
+  return generator();
 }

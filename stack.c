@@ -34,7 +34,7 @@ int isEmpty(struct Stack* stack)
 }
 
 // Function to add an item to stack.  It increases top by 1
-void push(struct Stack* stack, float item)
+void pushF(struct Stack* stack, float item)
 {
     if (isFull(stack))
         return;
@@ -42,7 +42,7 @@ void push(struct Stack* stack, float item)
 }
 
 // Function to remove an item from stack.  It decreases top by 1
-float pop(struct Stack* stack)
+float popF(struct Stack* stack)
 {
     if (isEmpty(stack))
         return INT_MIN;
@@ -50,7 +50,7 @@ float pop(struct Stack* stack)
 }
 
 // Function to return the top from stack without removing it
-float top(struct Stack* stack)
+float topF(struct Stack* stack)
 {
     if (isEmpty(stack))
         return INT_MIN;

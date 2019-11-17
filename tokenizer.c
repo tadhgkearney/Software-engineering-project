@@ -18,8 +18,9 @@ Or an error
 
 #include <stdio.h>
 #include <ctype.h>
+#include "InfixToPostfix.h"
 
-int tokenize(){
+int tokenize(void){
   /*
   function which carries out the full tokenizing process, converting a stream
   of characters into separate number/operator tokens
@@ -105,8 +106,8 @@ int tokenize(){
   //close all files
   fclose(inp);
   fclose(out);
-  // return no error
-  return 0;
+  // call infix to postfix
+  return i2p();
 }
 
 int main(int argc, char const *argv[]) {

@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+#include "virtualMachine.h"
 
 
 int generator()
@@ -69,5 +70,5 @@ int generator()
 
     fclose(fptr);
     fclose(fptr2);
-    return 0;
+    return calculate();
 }
