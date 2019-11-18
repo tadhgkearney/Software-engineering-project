@@ -81,6 +81,7 @@ int isOperator(char symbol) {
 
 
 int i2p() {
+
   FILE *in_file = fopen("infix2postfix_input.txt", "r"); // open input file in read mode
   FILE *out_file = fopen("generator_input.txt", "w"); //open output file in write mode
 
@@ -141,7 +142,7 @@ int i2p() {
     count++; //increase count
   }
 
-
+  puts(output_infix);
   fclose(in_file); // close file
   char postfix[size];
   int i=0; // index pointers
@@ -170,8 +171,29 @@ int i2p() {
           }
           i--; // decrease pointer
         }
-        fprintf(out_file, "%c", space); // print space to output file
+        // the following lines checks for the case where no multiplication operator
+        // is placed before a bracket but multiplication is assumed which often
+        // happens in arithmetic
+        item = output_infix[++i]; // increase pointer twice because of space
+        item = output_infix[++i];
+        if (item == '(') { // check if opening bracket
 
+          temp = pop();
+          item = '*'; // assign the missing multiplication sign as item
+          while (isOperator(temp)==1 && precedence(temp)>=precedence(item)) {
+            fprintf(out_file, "%c", temp); // print operator to output file
+            fprintf(out_file, "%c", space);// print a space
+
+            temp = pop(); // get next operator from stack
+          }
+
+          push(temp); // push both operators to stack ( item is of higher precedence than temp)
+          push(item);
+        }
+
+        fprintf(out_file, "%c", space); // print space to output file
+        i--; // decrease pointer
+        i--;
 
     } else if(isOperator(item)==1) { // else if item is an operator
 

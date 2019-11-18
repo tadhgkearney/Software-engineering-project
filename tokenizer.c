@@ -30,7 +30,7 @@ int tokenize(void){
   FILE *inp, *out; // files
   char buffer[255]; // buffer for storing numbers
   size_t n = 0; // pointer for buffer position
-  char c; // character to be read in
+  char c,d; // character to be read in
   size_t type = 0; // number type
   size_t op;
 
@@ -59,6 +59,9 @@ int tokenize(void){
     }
     // add any number or decimal point to the buffer
     else if (isdigit(c) || c == '.'){
+      if (d == ')'){
+        fprintf(out, "*\n");
+      }
       buffer[n++] = (char) c;
       if(c == '.'){
         // adjust number type if we get a decimal point
@@ -85,6 +88,9 @@ int tokenize(void){
       op = 0;
       for(int i = 0; i < 8; i++ ){
         if (c == ops[i]){
+          if (c == '(' && d == ')'){
+            fprintf(out, "*\n");
+          }
           fprintf(out, "%c\n", c);
           op = 1;
           break;
@@ -96,6 +102,7 @@ int tokenize(void){
         return 1;
       }
     }
+    d = c;
   }
   // print out any final number to the output
   if(n != 0){
