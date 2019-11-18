@@ -59,6 +59,7 @@ int tokenize(void){
     }
     // add any number or decimal point to the buffer
     else if (isdigit(c) || c == '.'){
+      // number after bracket same as multiplied
       if (d == ')'){
         fprintf(out, "*\n");
       }
@@ -88,7 +89,8 @@ int tokenize(void){
       op = 0;
       for(int i = 0; i < 8; i++ ){
         if (c == ops[i]){
-          if (c == '(' && d == ')'){
+          // check for situation like (a)(b) or a(b) which should be multiplied
+          if ((c == '(' && d == ')') || (c == '(' && isdigit(d))){
             fprintf(out, "*\n");
           }
           fprintf(out, "%c\n", c);
@@ -102,7 +104,10 @@ int tokenize(void){
         return 1;
       }
     }
-    d = c;
+    // store last char to check for multiplication situations
+    if (c != ' '){
+        d = c;
+    }
   }
   // print out any final number to the output
   if(n != 0){
