@@ -50,7 +50,7 @@ int tokenize(){
       // print any previous numbers to output if we hit a space
       if(n != 0){
         buffer[n++] = '\0';
-        fprintf(out, "%d ", type);
+        fprintf(out, "%zd ", type);
         fprintf(out, "%s\n", buffer);
         n = 0;
         type = 0;
@@ -74,7 +74,7 @@ int tokenize(){
       //any char that's not a number, decimal point or space
       if(n != 0){
         buffer[n++] = '\0';
-        fprintf(out, "%d ", type);
+        fprintf(out, "%zd ", type);
         fprintf(out, "%s\n", buffer);
         n = 0;
         type = 0;
@@ -99,7 +99,7 @@ int tokenize(){
   // print out any final number to the output
   if(n != 0){
     buffer[n++] = '\0';
-    fprintf(out, "%d ", type);
+    fprintf(out, "%zd ", type);
     fprintf(out, "%s", buffer);
   }
   //close all files
