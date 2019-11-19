@@ -82,7 +82,7 @@ int isOperator(char symbol) {
 
 int main(int argc, char const *argv[]) {
 
-  FILE *in_file = fopen("sample.txt", "r"); // open input file in read mode
+  FILE *in_file = fopen("infix2postfix_input.txt", "r"); // open input file in read mode
   FILE *out_file = fopen("generator_input.txt", "w"); //open output file in write mode
 
   size_t len = sizeof(input_infix);
