@@ -227,5 +227,5 @@ int i2p() {
   }
   fprintf(out_file, "\0"); // print end of line to output file
   fclose(out_file); // close file
-  return generator();
+  return 0;
 }

@@ -119,10 +119,5 @@ int tokenize(void){
   fclose(inp);
   fclose(out);
   // call infix to postfix
-  return i2p();
-}
-
-int main(int argc, char const *argv[]) {
-  /* run the function to tokenize */
-  return tokenize();
+  return 0;
 }
