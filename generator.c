@@ -10,7 +10,7 @@
 #include <string.h>
 
 
-int generator()
+int main(int argc, char const *argv[])
 {
     // pointer to file we are reading
     FILE *fptr;
