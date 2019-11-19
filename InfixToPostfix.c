@@ -16,7 +16,7 @@ A .txt file containing the converted postfix equation on a single line.
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
-#include "generator.h"
+
 
 
 #define size 256
@@ -227,5 +227,10 @@ int i2p() {
   }
   fprintf(out_file, "\0"); // print end of line to output file
   fclose(out_file); // close file
-  return generator();
+  return 0;
+}
+
+int main(int argc, char const *argv[]) {
+  /* code */
+  return i2p();
 }

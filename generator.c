@@ -8,10 +8,10 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-#include "virtualMachine.h"
 
 
-int generator()
+
+int generate()
 {
     // pointer to file we are reading
     FILE *fptr;
@@ -70,5 +70,10 @@ int generator()
 
     fclose(fptr);
     fclose(fptr2);
-    return calculate();
+    return 0;
+}
+
+int main(int argc, char const *argv[]) {
+  /* code */
+  return generate();
 }

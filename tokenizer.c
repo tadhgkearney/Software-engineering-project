@@ -18,7 +18,7 @@ Or an error
 
 #include <stdio.h>
 #include <ctype.h>
-#include "InfixToPostfix.h"
+
 
 int tokenize(void){
   /*
@@ -119,10 +119,9 @@ int tokenize(void){
   fclose(inp);
   fclose(out);
   // call infix to postfix
-  return i2p();
+  return 0;
 }
-
 int main(int argc, char const *argv[]) {
-  /* run the function to tokenize */
+
   return tokenize();
 }
