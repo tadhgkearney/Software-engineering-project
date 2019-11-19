@@ -121,7 +121,3 @@ int tokenize(void){
   // call infix to postfix
   return 0;
 }
-int main(int argc, char const *argv[]) {
-
-  return tokenize();
-}

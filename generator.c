@@ -72,8 +72,3 @@ int generate()
     fclose(fptr2);
     return 0;
 }
-
-int main(int argc, char const *argv[]) {
-  /* code */
-  return generate();
-}

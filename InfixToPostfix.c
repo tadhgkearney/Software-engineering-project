@@ -229,8 +229,3 @@ int i2p() {
   fclose(out_file); // close file
   return 0;
 }
-
-int main(int argc, char const *argv[]) {
-  /* code */
-  return i2p();
-}
