@@ -120,8 +120,11 @@ int tokenize(void){
   fclose(out);
   // call infix to postfix
   return 0;
+<<<<<<< HEAD
 }
 int main(int argc, char const *argv[]) {
 
   return tokenize();
+=======
+>>>>>>> b2b4efd369bd5e7b0d25a00414f5437729e41803
 }
