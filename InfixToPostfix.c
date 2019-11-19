@@ -142,7 +142,7 @@ int i2p() {
     count++; //increase count
   }
 
-  puts(output_infix);
+  //puts(output_infix);
   fclose(in_file); // close file
   char postfix[size];
   int i=0; // index pointers
