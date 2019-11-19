@@ -92,6 +92,6 @@ int calculate(){
     printf("Error: Extra items left on stack");
     return 1;
   }
-  printf("%g", answer);
+  printf("%g\n", answer);
   return 0;
 }
