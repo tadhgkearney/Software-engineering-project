@@ -228,12 +228,9 @@ int i2p() {
   fprintf(out_file, "\0"); // print end of line to output file
   fclose(out_file); // close file
   return 0;
-<<<<<<< HEAD
 }
 
 int main(int argc, char const *argv[]) {
   /* code */
   return i2p();
-=======
->>>>>>> b2b4efd369bd5e7b0d25a00414f5437729e41803
 }

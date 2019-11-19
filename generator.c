@@ -10,10 +10,7 @@
 #include <string.h>
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> b2b4efd369bd5e7b0d25a00414f5437729e41803
 int generate()
 {
     // pointer to file we are reading
@@ -74,12 +71,9 @@ int generate()
     fclose(fptr);
     fclose(fptr2);
     return 0;
-<<<<<<< HEAD
 }
 
 int main(int argc, char const *argv[]) {
   /* code */
   return generate();
-=======
->>>>>>> b2b4efd369bd5e7b0d25a00414f5437729e41803
 }
