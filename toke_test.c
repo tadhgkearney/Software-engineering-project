@@ -3,10 +3,10 @@
 #include <string.h>
 #include "tokenizer.h"
 
-char testTokenizer(char* file_contents){
+char * testTokenizer(char* file_contents){
   char src[50], dest[50];
   strcpy(dest,  "");
-  char result;
+  char *str_to_ret = malloc (sizeof (char) * 50);
   FILE *inp, *out; // files
   inp = fopen("tokenizer_input.txt", "w");
   fprintf(inp, "%s", file_contents);
@@ -29,13 +29,15 @@ char testTokenizer(char* file_contents){
     }
 
   fclose(out);
-  //result = char(dest);
-  printf("%s\n", dest );
-  return result;
+  str_to_ret = dest;
+  //printf("%s\n",str_to_ret);
+  return str_to_ret;
 }
 
 int main(int argc, char const *argv[]) {
   /* code */
-  testTokenizer("1 + 2\n");
+  char * answer;
+  answer = testTokenizer("1 + 2\n");
+  printf("%s", answer );
   return 0;
 }
