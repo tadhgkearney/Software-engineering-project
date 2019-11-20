@@ -66,7 +66,11 @@ char * testGenerator(char* file_contents){
   fprintf(inp, "%s", file_contents);
   //close files
   fclose(inp);
-  tokenize();
+  int result;
+  result = tokenize();
+  if (result == 1){
+    retur
+  }
 
   char * buffer = 0;
   long length;
@@ -89,15 +93,14 @@ char * testGenerator(char* file_contents){
 
 
 // Showing you how to use it on tokenizer
-int main(int argc, char const *argv[]) {
-  /* code */
-  char * answer;
+//int main(int argc, char const *argv[]) {
+  //char * answer;
   // put the input file contents as the argument
-  answer = testTokenizer(" 1*2\n");
-  printf("%s", answer );
+  //answer = testTokenizer(" 1*2\n");
+  //printf("%s", answer );
   // the test suite will do something similar to this
-  if (strcmp(answer, "0 1\r\n*\r\n0 2") == 0){
-    printf("\nyes\n");
-  }
-  return 0;
-}
+  //if (strcmp(answer, "0 1\r\n*\r\n0 2") == 0){
+    //printf("\nyes\n");
+  //}
+  //return 0;
+//}
