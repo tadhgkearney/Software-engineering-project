@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "tokenizer.h"
+#include "generator.h"
+#include "InfixToPostfix.h"
 
 char * testTokenizer(char* file_contents){
 
@@ -10,7 +12,11 @@ char * testTokenizer(char* file_contents){
   fprintf(inp, "%s", file_contents);
   //close files
   fclose(inp);
-  tokenize();
+  int result;
+  result = tokenize();
+  if (result == 1){
+    return "1";
+  }
 
   char * buffer = 0;
   long length;
@@ -21,13 +27,14 @@ char * testTokenizer(char* file_contents){
     fseek (f, 0, SEEK_END);
     length = ftell (f);
     fseek (f, 0, SEEK_SET);
-    buffer = malloc (length);
+    buffer = malloc (length + 1);
     if (buffer)
     {
       fread (buffer, 1, length, f);
     }
     fclose (f);
   }
+  buffer[length] = '\0';
   return buffer;
 }
 
@@ -38,7 +45,7 @@ char * testI2P(char* file_contents){
   fprintf(inp, "%s", file_contents);
   //close files
   fclose(inp);
-  tokenize();
+  i2p();
 
   char * buffer = 0;
   long length;
@@ -49,13 +56,14 @@ char * testI2P(char* file_contents){
     fseek (f, 0, SEEK_END);
     length = ftell (f);
     fseek (f, 0, SEEK_SET);
-    buffer = malloc (length);
+    buffer = malloc (length + 1);
     if (buffer)
     {
       fread (buffer, 1, length, f);
     }
     fclose (f);
   }
+  buffer[length] = '\0';
   return buffer;
 }
 
@@ -66,11 +74,7 @@ char * testGenerator(char* file_contents){
   fprintf(inp, "%s", file_contents);
   //close files
   fclose(inp);
-  int result;
-  result = tokenize();
-  if (result == 1){
-    retur
-  }
+  generate();
 
   char * buffer = 0;
   long length;
@@ -81,26 +85,24 @@ char * testGenerator(char* file_contents){
     fseek (f, 0, SEEK_END);
     length = ftell (f);
     fseek (f, 0, SEEK_SET);
-    buffer = malloc (length);
+    buffer = malloc (length + 1);
     if (buffer)
     {
       fread (buffer, 1, length, f);
     }
     fclose (f);
   }
+  buffer[length] = '\0';
   return buffer;
 }
 
 
 // Showing you how to use it on tokenizer
-//int main(int argc, char const *argv[]) {
-  //char * answer;
+int main(int argc, char const *argv[]) {
+  char * answer;
   // put the input file contents as the argument
-  //answer = testTokenizer(" 1*2\n");
-  //printf("%s", answer );
-  // the test suite will do something similar to this
-  //if (strcmp(answer, "0 1\r\n*\r\n0 2") == 0){
-    //printf("\nyes\n");
-  //}
-  //return 0;
-//}
+  answer = testTokenizer("5(56)(3) 4\n");
+  printf("%s", answer );
+
+  return 0;
+}
