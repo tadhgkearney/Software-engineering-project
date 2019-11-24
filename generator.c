@@ -52,7 +52,6 @@ int generate()
             for(int i=0;i<255;i++){
                 if(token[i]=='.'){
                     double r = atof(token);
-                    // BUG ALERT: no float greater than 5 decimal places can be printed
                     // %g uses the shortest representation of a float. i.e. gets rid of trailing zeros
                     fprintf(fptr2, "LOADFLOAT %g", r);
                     is_float = 1;
