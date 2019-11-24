@@ -159,7 +159,7 @@ int i2p() {
     if (item=='(') { //push an opening bracket straight to stack
       push(item);
     } else if(isalnum(item)) { // else if its a number
-        fprintf(out_file, "%c", item); // print to file
+        fprintf(out_file, "%c ", item); // print to file
         item = output_infix[++i]; // get next item as it may be multi-digit number/float
 
         if (item == ' ' || item == ')') { // if it is not a multi-digit number/float
@@ -171,6 +171,7 @@ int i2p() {
           }
           i--; // decrease pointer
         }
+        fprintf(out_file, "%c", space);// print a space
         
 
     } else if(isOperator(item)==1) { // else if item is an operator
@@ -178,8 +179,8 @@ int i2p() {
         temp = pop(); // get operator(s) from stack and print to output file if they
                       // are of a higher precedence than the current operator
         while (isOperator(temp)==1 && precedence(temp)>=precedence(item)) {
-          fprintf(out_file, "%c", temp); // print operator to output file
-          fprintf(out_file, "%c", space);// print a space
+          fprintf(out_file, "%c ", temp); // print operator to output file
+          //fprintf(out_file, "%c", space);// print a space
 
           temp = pop(); // get next operator from stack
         }
@@ -190,8 +191,8 @@ int i2p() {
       temp=pop(); // print all items on stack to output file until an opening bracket is found
       while(temp!='(') {
 
-        fprintf(out_file, "%c", temp); // print item to output file
-        fprintf(out_file, "%c", space);// print a space
+        fprintf(out_file, "%c ", temp); // print item to output file
+        //fprintf(out_file, "%c", space);// print a space
 
         temp=pop(); // get next item from stack
       }
@@ -199,11 +200,11 @@ int i2p() {
     i++; //increase pointer
   }
   while(top>-1) { //print any remaining items in stack to output file
-    fprintf(out_file, "%c", pop());
-    fprintf(out_file, "%c", space);
+    fprintf(out_file, "%c ", pop());
+    //fprintf(out_file, "%c", space);
 
   }
-  fprintf(out_file, "\0"); // print end of line to output file
+  //fprintf(out_file, "\0"); // print end of line to output file
   fclose(out_file); // close file
   return 0;
 }
