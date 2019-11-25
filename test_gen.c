@@ -13,8 +13,10 @@ void testInputs(){
     outputs[1] = "LOADINT 1\nLOADINT 2\nADD";
     inputs[2] = "1.2 3 +";
     outputs[2] = "LOADFLOAT 1.2\nLOADINT 3\nADD";
+    inputs[3] = "";
+    outputs[3] = "";
 
-    for(int i=0;i<3;i++){
+    for(int i=0;i<4;i++){
         FILE *test_gen;
         test_gen = fopen("generator_input.txt","w");
         fprintf(test_gen, "%s", inputs[i]);
