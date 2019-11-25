@@ -102,7 +102,7 @@ int calculate(){
   // added for testing file
   FILE *inp2;
   inp2 = fopen("virtualMachine_output.txt", "w");
-  fprint(inp2, "%g", answer);
+  fprintf(inp2, "%g", answer);
   fclose(inp2);
   if (isEmpty(stack) == 0){
     printf("%g\n", answer);
