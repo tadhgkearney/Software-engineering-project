@@ -1,3 +1,15 @@
+/*
+Virtual Machine
+This is a stack-based virtual machine.
+It takes in a set of pre-defined instructions as input.
+It carries out the instructions it is given and calculates the result of the instructions.
+The result is then outputted to the terminal.
+
+@author: Sophie O'Dwyer
+
+*/
+
+
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
@@ -87,11 +99,6 @@ int calculate(){
   // pop value off stack and print to screen
 
   answer = popF(stack);
-  //outputting answer to file for testing
-  FILE *inp2;
-  inp2 = fopen("virtualMachine_output.txt", "w");
-  fprintf(inp2, "%g", answer);
-  fclose(inp2);
   if (isEmpty(stack) == 0){
     printf("%g\n", answer);
     printf("Error: Extra items left on stack");
