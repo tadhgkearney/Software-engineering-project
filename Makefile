@@ -13,7 +13,7 @@ clean:
 test:
 	gcc -o test.t test_gen.c generator.c
 	prove ./test.t
-	gcc -o test.t test_vm.c virtualMachine.c
+	gcc -o test.t test_vm.c virtualMachine.c stack.c -lm
 	prove ./test.t
 	gcc -o test.t test_toke.c tokenizer.c
 	prove ./test.t
