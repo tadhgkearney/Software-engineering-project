@@ -13,3 +13,10 @@ clean:
 test:
 	gcc -o test.t test_gen.c generator.c
 	prove ./test.t
+	gcc -o test.t test_gen.c generator.c
+	prove ./test.t
+	gcc -o test.t test_toke.c tokenizer.c
+	prove ./test.t
+	gcc -o test.t i2p_tests.c InfixToPostfix.c
+	prove ./test.t
+	
