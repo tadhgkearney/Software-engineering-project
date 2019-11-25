@@ -67,42 +67,13 @@ char * testI2P(char* file_contents){
   return buffer;
 }
 
-char * testGenerator(char* file_contents){
-
-  FILE *inp; // files
-  inp = fopen("generator_input.txt", "w");
-  fprintf(inp, "%s", file_contents);
-  //close files
-  fclose(inp);
-  generate();
-
-  char * buffer = 0;
-  long length;
-  FILE * f = fopen ("virtualMachine_input.txt", "rb");
-
-  if (f)
-  {
-    fseek (f, 0, SEEK_END);
-    length = ftell (f);
-    fseek (f, 0, SEEK_SET);
-    buffer = malloc (length + 1);
-    if (buffer)
-    {
-      fread (buffer, 1, length, f);
-    }
-    fclose (f);
-  }
-  buffer[length] = '\0';
-  return buffer;
-}
-
 
 // Showing you how to use it on tokenizer
-int main(int argc, char const *argv[]) {
-  char * answer;
+//int main(int argc, char const *argv[]) {
+  //char * answer;
   // put the input file contents as the argument
-  answer = testTokenizer("5(56)(3) 4\n");
-  printf("%s", answer );
+  //answer = testTokenizer("12 + 2.3.9");
+  //printf("%s", answer );
 
-  return 0;
-}
+  //return 0;
+//}
