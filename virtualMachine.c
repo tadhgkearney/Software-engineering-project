@@ -99,6 +99,11 @@ int calculate(){
   // pop value off stack and print to screen
 
   answer = popF(stack);
+  // added for testing file
+  FILE *inp2;
+  inp2 = fopen("virtualMachine_output.txt", "w");
+  fprint(inp2, "%g", answer);
+  fclose(inp2);
   if (isEmpty(stack) == 0){
     printf("%g\n", answer);
     printf("Error: Extra items left on stack");
