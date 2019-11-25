@@ -9,12 +9,14 @@ void testInputs(){
     char *outputs[10];
     inputs[0] = "LOADINT 1\nLOADINT 2\nADD";
     outputs[0] = "3";
-    inputs[1] = "1 2 +";
-    outputs[1] = "LOADINT 1\nLOADINT 2\nADD";
-    inputs[2] = "1.2 3 +";
-    outputs[2] = "LOADFLOAT 1.2\nLOADINT 3\nADD";
+    inputs[1] = "LOADFLOAT 1.2\nLOADINT 3\nADD";
+    outputs[1] = "4.2";
+    inputs[2] = "LOADINT 4\nLOADINT 3\nLOADINT 1\nSUB\nDIV";
+    outputs[2] = "2";
+    inputs[3] = "LOADINT 5\nLOADFLOAT 2.5\nDIV";
+    outputs[3] = "2";
 
-    for(int i=0;i<1;i++){
+    for(int i=0;i<4;i++){
         FILE *test_vm;
         test_vm = fopen("virtualMachine_input.txt","w");
         fprintf(test_vm, "%s", inputs[i]);
