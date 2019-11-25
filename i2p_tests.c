@@ -43,11 +43,11 @@ void testInputs(){
 TESTS{
 
 
-    //ok(isOperator('+') == 1, "+ is in fact an operator.");
-    //ok(isOperator('&') == 0, "& is in fact not an operator.");
+    ok(isOperator('+') == 1, "+ is in fact an operator.");
+    ok(isOperator('&') == 0, "& is in fact not an operator.");
 
-    //ok(precedence('^') == 3, "The precedence of '^' is in fact 3.");
-    //ok(precedence('&') == 0, "There is in fact no precedence for this character as it in is not an operator.");
+    ok(precedence('^') == 3, "The precedence of '^' is in fact 3.");
+    ok(precedence('&') == 0, "There is in fact no precedence for this character as it in is not an operator.");
 
     testInputs();
 }
