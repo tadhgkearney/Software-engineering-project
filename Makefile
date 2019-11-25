@@ -4,7 +4,7 @@ default: all
 all: Main
 
 Main:
-	gcc tokenizer.c InfixToPostfix.c generator.c virtualMachine.c main.c stack.c -lm
+	gcc -o output.o tokenizer.c InfixToPostfix.c generator.c virtualMachine.c main.c stack.c -lm
 	./output.o
 
 clean:
