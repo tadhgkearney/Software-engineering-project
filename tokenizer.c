@@ -45,7 +45,7 @@ int tokenize(void){
   }
 
   // loop through input file getting new character each time
-  while ((c = fgetc(inp)) != '\n'){
+  while ((c = fgetc(inp)) != EOF){
     // ignore space characters
     if (c == ' '){
       // print any previous numbers to output if we hit a space
