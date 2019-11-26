@@ -1,8 +1,15 @@
 /*
-    Name: Tadhg Kearney
-    Date: 15/10/19
-    Purpose: take list of tokens and convert them to machine instructions
-             generator portion of calculator
+Generator
+Program takes a list of tokens(in postfix notation) and converts them to machine
+instructions each of their own line, still in postfix notation.
+
+Input:
+A .txt file containing one line of an arithmetic expression in postfix notation
+
+Output:
+A .txt file with each line containing a machine instruction in postfix notation
+
+@author: Tadhg Kearney
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -49,6 +56,8 @@ int generate()
         else{
             // there is no in-bulit boolean value in c, so using 0 as false and 1 as true
             int is_float = 0;
+            // go through whole array checking if a . occurs meaning its a is_float
+            // else its an int
             for(int i=0;i<255;i++){
                 if(token[i]=='.'){
                     double r = atof(token);
