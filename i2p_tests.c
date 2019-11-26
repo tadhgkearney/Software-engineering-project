@@ -7,6 +7,7 @@
 void testInputs(){
     char *inputs[4];
     char *outputs[4];
+    //test cases 
     inputs[0] = "0 1\n*\n0 2";
     outputs[0] = "1 2 * ";
     inputs[1] = "(\n1 4.5\n*\n0 2\n)\n^\n0 3\n+\n0 4";
@@ -16,7 +17,8 @@ void testInputs(){
     inputs[3] = "1 0.234434434\n+\n1 3334.56\n^\n0 2";
     outputs[3] = "0.234434434 3334.56 2 ^ + ";
 
-    for(int i=0;i<4;i++){
+    for(int i=0;i<4;i++){ 
+        // Pass the four test cases through the i2p() function and compare that output to the expected output.
         FILE *test_i2p;
         test_i2p = fopen("infix2postfix_input.txt","w");
         fprintf(test_i2p, "%s", inputs[i]);
@@ -42,7 +44,7 @@ void testInputs(){
 
 TESTS{
 
-
+    // CTAP tests
     ok(isOperator('+') == 1, "+ is in fact an operator.");
     ok(isOperator('&') == 0, "& is in fact not an operator.");
 
